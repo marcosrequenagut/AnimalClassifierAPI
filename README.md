@@ -139,4 +139,4 @@ Then, I will provide feedback on your solution, and we can discuss it further in
 
 | Link to the repository |
 |------------------------|
-| Add yours below        |
+| [jfaldanam/py_challenge_solution](https://github.com/jfaldanam/py_challenge_solution) |
