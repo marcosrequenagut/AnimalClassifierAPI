@@ -50,7 +50,7 @@ async def get_data(
                 results.append(
                     AnimalCharacteristics(
                         walks_on_n_legs=2,
-                        height=random.uniform(0.8, 2),
+                        height=random.uniform(1.6, 2),
                         weight=random.uniform(40, 90),
                         has_wings=False,
                         has_tail=True,
@@ -72,7 +72,7 @@ async def get_data(
                 results.append(
                     AnimalCharacteristics(
                         walks_on_n_legs=2,
-                        height=random.uniform(0.15, 0.60),
+                        height=random.uniform(0.15, 0.50),
                         weight=random.uniform(0.037, 4.2),
                         has_wings=True,
                         has_tail=True,
