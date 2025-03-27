@@ -1,9 +1,13 @@
 import random
-from typing import Annotated, Any
+from typing import Any
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter
 
-from py_challenge_data_service.models import AnimalCharacteristics, AnimalClassification
+from py_challenge_data_service.models import (
+    AnimalCharacteristics,
+    AnimalClassification,
+    RequestInput,
+)
 
 router = APIRouter(
     tags=["animals"],
@@ -19,18 +23,17 @@ async def get_schema() -> dict[str, Any]:
     return AnimalCharacteristics.model_json_schema()
 
 
-@router.get(
+@router.post(
     "/data",
     summary="Get the data",
     description="This endpoint returns animal data.",
 )
 async def get_data(
-    number_of_datapoints: Annotated[
-        int, Query(description="How many datapoints to receive back from the endpoint.", gt=0)
-    ] = 10,
+    request: RequestInput,
 ) -> list[AnimalCharacteristics]:
+    random.seed(request.seed)
     results = []
-    for _ in range(number_of_datapoints):
+    for _ in range(request.number_of_datapoints):
         if random.random() < 0.05:
             # With a small, random chance we will return noise to generate outliers
             results.append(

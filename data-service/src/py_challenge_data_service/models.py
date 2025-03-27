@@ -3,6 +3,20 @@ from enum import Enum
 from pydantic import BaseModel, Field
 
 
+class RequestInput(BaseModel):
+    seed: int = Field(
+        default=42,
+        title="Seed",
+        description="The seed to use for the random number generator",
+    )
+    number_of_datapoints: int = Field(
+        default=500,
+        title="Number of datapoints",
+        description="The number of datapoints to generate",
+        gt=0,
+    )
+
+
 class AnimalClassification(str, Enum):
     KANGAROO = "kangaroo"
     ELEPHANT = "elephant"

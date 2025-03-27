@@ -21,8 +21,11 @@ You can then start using it from http://127.0.0.1:8777
 You can send a request through [curl](https://curl.se/)
 ```bash
 $ curl -X 'GET' \
-  'http://localhost:8777/api/v1/animals/data?number_of_datapoints=5' \
-  -H 'accept: application/json'
+  'http://localhost:8777/api/v1/animals/data' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "seed": 42,
+  "number_of_datapoints": 500
+}'
 ```
-
-... or use a browser to access the same URL. http://localhost:8777/api/v1/animals/data?number_of_datapoints=5

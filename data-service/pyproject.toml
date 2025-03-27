@@ -1,7 +1,7 @@
 [project]
-name = "py_challenge"
+name = "py_challenge_data_service"
 dynamic = ["version"]
-description = "A small Python challenge"
+description = "A small Python challenge for the I edition of the Master in Big Data, artificial integiligence and data engineering at the University of Málaga. "
 authors = [{ name = "jfaldanam" , email = "jfaldanam@uma.es"}]
 license = "MIT"
 readme = "README.md"
