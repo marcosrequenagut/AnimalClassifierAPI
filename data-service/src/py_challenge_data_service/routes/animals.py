@@ -3,6 +3,7 @@ from typing import Any
 
 from fastapi import APIRouter
 
+from py_challenge_data_service import logger
 from py_challenge_data_service.models import (
     AnimalCharacteristics,
     AnimalClassification,
@@ -94,5 +95,11 @@ async def get_data(
                 )
             case _:
                 assert False, "This should never happen. Maybe the enum was modified?"
+
+    logger.info(
+        "Sucessfully generated data",
+        number_of_datapoints=request.number_of_datapoints,
+        seed=request.seed,
+    )
 
     return results
