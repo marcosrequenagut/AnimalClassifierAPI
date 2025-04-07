@@ -1,21 +1,27 @@
 import numpy as np
 import pandas as pd
 import warnings
-import matplotlib.pyplot as plt
-from sklearn.model_selection import GridSearchCV
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
-from sklearn.datasets import load_wine
+
 warnings.filterwarnings(action='ignore') 
 
 
 # Load the data
 df = pd.read_csv(r"C:\Users\34651\Desktop\MASTER\LABORATORIOS\challenge_notebooks\data_cleaned.csv", sep=",")
+print(f"\n{df.head()}")
+
+# View columns, view number of null/nan, sample data of each column,...
+print(f"\n{df.info()}")
 
 # Separate the label from the features
 X = df.drop("label", axis=1) # Take every column except the "label" one
 y = df["label"] # Goal column
+
+print(f"\nX_shape: {X.shape}")
+print(f"y_shpae: {y.shape}")
 
 # Divide the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
@@ -29,6 +35,10 @@ RFC = RandomForestClassifier(
 
 # Train the model
 RFC.fit(X_train, y_train)
+
+# Save the model
+with open("random_forest_model.pkl", "wb") as f:
+    pickle.dump(RFC, f)
 
 # Predict
 y_pred = RFC.predict(X_test)
