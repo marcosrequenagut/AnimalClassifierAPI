@@ -5,6 +5,7 @@ import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
+from pathlib import Path
 
 warnings.filterwarnings(action='ignore') 
 
@@ -38,6 +39,17 @@ RFC.fit(X_train, y_train)
 
 # Save the model
 with open("random_forest_model.pkl", "wb") as f:
+    pickle.dump(RFC, f)
+
+# Crea la carpeta 'model' al mismo nivel que 'routes'
+model_dir = Path(__file__).resolve().parent / "model"
+model_dir.mkdir(parents=True, exist_ok=True)
+
+# Define la ruta final del modelo
+model_path = model_dir / "random_forest_model.pkl"
+
+# Guarda el modelo
+with open(model_path, "wb") as f:
     pickle.dump(RFC, f)
 
 # Predict
