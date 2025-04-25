@@ -6,9 +6,26 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 from pathlib import Path
+from minio import Minio
 
 warnings.filterwarnings(action='ignore') 
 
+""" Minio client, necessary to connect to the Minio server
+It is usefull tu store the model in the Minio server. 
+To run it, use this commando in the terminal:
+
+docker run -p 9003:9000 -p 9004:9001 minio/minio server /data --console-address ":9001" 
+
+We don't specify the access and secret key, because we are using the default ones.
+
+We have to create a bucket called mpc in minio. To acces to the Minio server, we can use the browser and go to http://localhost:9004.
+"""
+client = Minio(
+    "localhost:9003", # Minio server address
+    access_key = "minioadmin", # Minio default access key
+    secret_key = "minioadmin", # Minio default secret key
+    secure = False,
+)
 
 # Load the data
 df = pd.read_csv(r"C:\Users\34651\Desktop\MASTER\LABORATORIOS\challenge_notebooks\data_cleaned.csv", sep=",")
@@ -40,6 +57,8 @@ RFC.fit(X_train, y_train)
 # Save the model
 with open("random_forest_model.pkl", "wb") as f:
     pickle.dump(RFC, f)
+
+client.fput_object("mpc", f"model/model.pkl", "random_forest_model.pkl")
 
 # Crea la carpeta 'model' al mismo nivel que 'routes'
 model_dir = Path(__file__).resolve().parent / "model"
