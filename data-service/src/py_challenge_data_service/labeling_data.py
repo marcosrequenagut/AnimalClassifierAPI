@@ -1,6 +1,10 @@
 from pymongo import MongoClient
 import json
 
+# This script labels the animals in the database based on their characteristics. It connects to the MongoDB database,
+# retrieves the animal data, and applies a set of rules to assign labels to each animal.
+# It also handles any data errors by deleting documents with unusual characteristics.
+
 client = MongoClient("mongodb+srv://marcosrequenagut:Markitos2001@master.dxuf4.mongodb.net/")
 db = client["laboratory"]
 collection = db["animals"]

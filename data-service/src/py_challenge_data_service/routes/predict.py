@@ -9,6 +9,8 @@ model_path = Path(__file__).resolve().parent.parent / "model" / "random_forest_m
 
 with open(model_path, "rb") as f:
     model = pickle.load(f)
+
+# Register the router, it use to define the endpoints of the API
 router = APIRouter()   
 
 # Define the prediction endpoint
