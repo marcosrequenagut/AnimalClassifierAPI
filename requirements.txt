@@ -6,3 +6,4 @@ structlog
 numpy
 pandas
 scikit-learn
+pickle
