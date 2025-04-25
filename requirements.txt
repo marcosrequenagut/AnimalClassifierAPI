@@ -1,3 +1,9 @@
 pymongo
 minio
 fastapi
+uvicorn
+structlog
+numpy
+pandas
+scikit-learn
+pickle
