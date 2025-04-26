@@ -15,6 +15,14 @@ model_path = "C:/Users/34651/Desktop/MASTER/LABORATORIOS/py_challenge/data-servi
 
 @router.post("/retrain", summary="Retrain the model with new data")
 def retrain():
+    """
+    This endpoint retrains the model with new data. The data is read from a CSV file.
+    The retrained model overwrites the existing model.
+    
+    It doesn't receive any parameters as the CSV file is always read directly from the file system. 
+    The model is updated with the most recent available data in the CSV file.
+    """
+
     try:
         # File path
         data = r"C:\Users\34651\Desktop\MASTER\LABORATORIOS\challenge_notebooks\data_cleaned.csv"

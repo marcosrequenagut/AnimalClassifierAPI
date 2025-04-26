@@ -17,7 +17,7 @@ router = APIRouter()
 @router.post("/predict", summary="Predict the class of an animal")
 def predict(animal: AnimalNoTail):
     """
-    This endpoint predict the class of an animal based on its characteristics.
+    This endpoint predict the class of an animal based on its characteristics. 
 
     - **walks_on_n_legs**: The number of legs the animal walks on
     - **height**: The height of the animal in meters

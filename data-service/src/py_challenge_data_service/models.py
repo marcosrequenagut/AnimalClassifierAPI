@@ -2,7 +2,8 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-
+# In this file, we define the data models used in the API using Pydantic.
+# Ensure that the API is properly typed with Pydantic models.
 class RequestInput(BaseModel):
     seed: int = Field(
         default=42,

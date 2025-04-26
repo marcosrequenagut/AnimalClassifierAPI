@@ -8,3 +8,6 @@ pandas
 scikit-learn
 pickle
 sqlalchemmy
+python-dotenv
+cx_Oracle
+oracledb
