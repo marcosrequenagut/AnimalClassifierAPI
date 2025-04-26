@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
 from py_challenge_data_service import __version__
-from py_challenge_data_service.routes import animals, predict, retrain
+from py_challenge_data_service.routes import animals, predict, retrain, store_prediction
 
 app = FastAPI(
     title="py_challenge Data Service",
@@ -38,13 +38,20 @@ app.include_router(
     prefix="/api/v1/animals",
 )
 
+# Prediction router
 app.include_router(
     predict.router,
     prefix="/api/v1/predict",
 )
 
-# 
+# Retrain router
 app.include_router(
     retrain.router,
     prefix="/api/v1/retrain",
+)
+
+# Prediction and store router
+app.include_router(
+    store_prediction.router,
+    prefix="/api/v1/store_prediction",
 )
