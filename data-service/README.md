@@ -12,7 +12,7 @@ $ docker build -t py_challenge_data_service:latest .
 
 Then to run the API use:
 ```bash
-$ docker run -p 8777:8777 py_challenge_data_service:latest
+$ python -m uvicorn py_challenge_data_service.app:app --reload --host 127.0.0.1 --port 8777
 ```
 
 You can then start using it from http://127.0.0.1:8777

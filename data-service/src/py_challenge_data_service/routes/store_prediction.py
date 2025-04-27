@@ -3,22 +3,7 @@ from py_challenge_data_service.models import AnimalNoTail
 import numpy as np
 import pickle
 from pathlib import Path
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
-import os
-import oracledb
-
-# Load the DB credentials
-load_dotenv()
-
-USERNAME = os.getenv("DB_USERNAME")
-PASSWORD = os.getenv("DB_PASSWORD")
-HOST = os.getenv("DB_HOST")
-sid = os.getenv("sid")
-
-def get_db_connection():
-    return oracledb.connect(user=USERNAME, password=PASSWORD, host=HOST, sid=sid)
+from py_challenge_data_service.utils import get_db_connection
 
 # Load the model using a relative path
 model_path = Path(__file__).resolve().parent.parent / "model" / "random_forest_model.pkl"
