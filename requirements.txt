@@ -11,3 +11,5 @@ sqlalchemmy
 python-dotenv
 cx_Oracle
 oracledb
+streamlit
+requests
