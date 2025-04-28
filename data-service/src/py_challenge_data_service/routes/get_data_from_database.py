@@ -35,6 +35,4 @@ def get_data_from_databae():
     cursor.close()
     connection.close()
 
-    return{"mmessage": "Data showed successfully.",
-            "Data": data
-    }
+    return data

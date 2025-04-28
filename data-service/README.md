@@ -9,10 +9,14 @@ To build the image run:
 ```bash
 $ docker build -t py_challenge_data_service:latest .
 ```
-
+# How to run the API of FastApi?
 Then to run the API use:
 ```bash
 $ python -m uvicorn py_challenge_data_service.app:app --reload --host 127.0.0.1 --port 8777
+```
+# How to run the Streamlit Dashboard?
+```bash
+$ streamlit run data-service/src/py_challenge_data_service/dashboard.py 
 ```
 
 You can then start using it from http://127.0.0.1:8777
